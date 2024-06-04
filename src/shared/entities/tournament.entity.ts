@@ -2,7 +2,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  ManyToMany,
   OneToMany,
+  JoinTable,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
@@ -38,7 +40,8 @@ export class Tournament {
   @DeleteDateColumn({ nullable: true })
   deletedAt?: Date;
 
-  @OneToMany(() => Player, (player) => player.tournaments)
+  @ManyToMany(() => Player, (player) => player.tournaments)
+  @JoinTable()
   players: Player[];
 
   @OneToMany(() => Result, (result) => result.tournament)

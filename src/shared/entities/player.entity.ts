@@ -44,6 +44,12 @@ export class Player {
   @JoinTable()
   tournaments: Tournament[];
 
+  @OneToMany(() => Result, (result) => result.winner)
+  wins: Result[];
+
+  @OneToMany(() => Result, (result) => result.loser)
+  losses: Result[];
+
   @OneToMany(() => Result, (result) => result.player)
   results: Result[];
 }

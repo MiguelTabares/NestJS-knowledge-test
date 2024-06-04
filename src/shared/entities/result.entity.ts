@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
-import { Tournament, Player } from './index-entities';
+import { Player, Tournament } from './index-entities';
 
 @Entity()
 export class Result {
@@ -20,6 +20,18 @@ export class Result {
   @Column()
   position: number;
 
+  @ManyToOne(() => Player, (player) => player.results)
+  player: Player;
+
+  @Column()
+  playerId: number;
+
+  @ManyToOne(() => Tournament, (tournament) => tournament.results)
+  tournament: Tournament;
+
+  @Column()
+  tournamentId: number;
+
   @CreateDateColumn()
   createdAt: Date;
 
@@ -29,9 +41,9 @@ export class Result {
   @DeleteDateColumn({ nullable: true })
   deletedAt?: Date;
 
-  @ManyToOne(() => Tournament, (tournament) => tournament.results)
-  tournament: Tournament;
+  @Column()
+  winner: number;
 
-  @ManyToOne(() => Player, (player) => player.results)
-  player: Player;
+  @Column()
+  loser: number;
 }

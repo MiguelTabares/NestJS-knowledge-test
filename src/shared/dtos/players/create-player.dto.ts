@@ -2,7 +2,7 @@ import {
   IsString,
   IsInt,
   IsNotEmpty,
-  IsDate,
+  IsDateString,
   IsOptional,
 } from 'class-validator';
 
@@ -27,15 +27,15 @@ export class CreatePlayerDto {
   @IsNotEmpty()
   country: string;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   createdAt?: Date;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   updatedAt?: Date;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   deletedAt?: Date;
 }

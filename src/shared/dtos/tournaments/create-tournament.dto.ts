@@ -2,7 +2,6 @@ import {
   IsString,
   IsNotEmpty,
   IsDateString,
-  IsDate,
   IsOptional,
 } from 'class-validator';
 
@@ -13,11 +12,11 @@ export class CreateTournamentDto {
 
   @IsDateString()
   @IsNotEmpty()
-  startDate: Date;
+  startDate: string;
 
   @IsDateString()
   @IsNotEmpty()
-  endDate: Date;
+  endDate: string;
 
   @IsString()
   @IsNotEmpty()
@@ -27,15 +26,15 @@ export class CreateTournamentDto {
   @IsNotEmpty()
   description: string;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
-  createdAt?: Date;
+  createdAt?: string;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
-  updatedAt?: Date;
+  updatedAt?: string;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
-  deletedAt?: Date;
+  deletedAt?: string;
 }

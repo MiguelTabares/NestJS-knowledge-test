@@ -3,7 +3,7 @@ import {
   IsNotEmpty,
   IsPositive,
   Min,
-  IsDate,
+  IsDateString,
   IsOptional,
 } from 'class-validator';
 
@@ -20,21 +20,28 @@ export class CreateResultDto {
 
   @IsNumber()
   @IsNotEmpty()
+  @IsPositive()
   tournamentId: number;
 
   @IsNumber()
   @IsNotEmpty()
-  playerId: number;
+  @IsPositive()
+  winnerId: number;
 
-  @IsDate()
+  @IsNumber()
+  @IsNotEmpty()
+  @IsPositive()
+  loserId: number;
+
+  @IsDateString()
   @IsOptional()
   createdAt?: Date;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   updatedAt?: Date;
 
-  @IsDate()
+  @IsDateString()
   @IsOptional()
   deletedAt?: Date;
 }
