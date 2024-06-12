@@ -38,4 +38,8 @@ export class CreatePlayerDto {
   @IsDateString()
   @IsOptional()
   deletedAt?: Date;
+
+  @IsDateString()
+  @IsOptional()
+  claimedAt?: Date;
 }

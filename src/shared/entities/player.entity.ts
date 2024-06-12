@@ -10,6 +10,8 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 import { Tournament, Result } from './index-entities';
+import { Prize } from './prize.entity';
+import { Assignments } from './assignment.entity';
 
 @Entity()
 export class Player {
@@ -52,4 +54,14 @@ export class Player {
 
   @OneToMany(() => Result, (result) => result.player)
   results: Result[];
+
+  @ManyToMany(() => Prize, (prize) => prize.players)
+  @JoinTable()
+  prizes: Prize[];
+
+  @Column({ type: 'timestamp', nullable: true })
+  claimedAt: Date;
+
+  @OneToMany(() => Assignments, assignment => assignment.player)
+  assignments: Assignments[];
 }
