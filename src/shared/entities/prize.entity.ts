@@ -1,6 +1,13 @@
-import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Player } from "./player.entity";
-import { Assignments } from "./assignment.entity";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Player } from './player.entity';
+import { Assignments } from './assignment.entity';
 
 @Entity()
 export class Prize {
@@ -17,6 +24,6 @@ export class Prize {
   @JoinTable()
   players: Player[];
 
-  @OneToMany(() => Assignments, assignment => assignment.prize)
+  @OneToMany(() => Assignments, (assignment) => assignment.prize)
   assignments: Assignments[];
 }
