@@ -19,7 +19,7 @@ export class AssignmentsService {
   ) {}
 
   async assignRandomPrize(playerId: number): Promise<Assignments> {
-    const player = await this.playerRepository.findOne(playerId);
+    const player = await this.playerRepository.findOne({where: {id: playerId}});
     if (!player) {
       throw new Error('Player not found');
     }
