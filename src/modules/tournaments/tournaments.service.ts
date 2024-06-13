@@ -58,5 +58,3 @@ export class TournamentsService {
     await this.tournamentRepository.softDelete(id);
   }
 }
-
-//
