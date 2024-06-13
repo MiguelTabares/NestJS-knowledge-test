@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Assignments } from '../../shared/entities/assignment.entity';
 import { Player } from '../../shared/entities/player.entity';
 import { PrizesService } from '../prizes/prizes.service';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class AssignmentsService {
@@ -34,10 +34,15 @@ export class AssignmentsService {
     return this.assignmentsRepository.save(assignment);
   }
 
-  @Cron(CronExpression.EVERY_DAY_AT_11PM, {
+  // Línea comentada: Probar que funciona al ejecutar cada 30 segundos.
+  // @Cron('30 * * * * *', {
+  @Cron('59 23 * * *', {
     timeZone: 'America/Bogota',
   })
+
   async assignPrizesAutomatically() {
+    console.log("Hola");
+    
     this.logger.debug('Assigning prizes automatically at 11:59pm Colombia time');
 
     const players = await this.playerRepository.find({ where: { claimedAt: null } });

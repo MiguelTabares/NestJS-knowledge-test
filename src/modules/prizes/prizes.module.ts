@@ -17,4 +17,4 @@ import { Prize } from '../../shared/entities/prize.entity';
   controllers: [AssignmentsController, PrizesController],
   providers: [AssignmentsService, PrizesService],
 })
-export class AssignmentsModule {}
+export class PrizesModule {}

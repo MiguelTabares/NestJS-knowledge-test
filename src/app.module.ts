@@ -5,6 +5,8 @@ import { PlayersModule } from './modules/players/players.module';
 import { ResultsModule } from './modules/results/results.module';
 import { TournamentsModule } from './modules/tournaments/tournaments.module';
 import dbConfig from './db-config/dbConfig';
+import { AssignmentsModule } from './modules/assignments/assignments.module';
+import { PrizesModule } from './modules/prizes/prizes.module';
 
 @Module({
   imports: [
@@ -28,6 +30,9 @@ import dbConfig from './db-config/dbConfig';
     PlayersModule,
     ResultsModule,
     TournamentsModule,
+    PrizesModule,
+    AssignmentsModule
+
   ],
   controllers: [],
   providers: [],
